@@ -1,12 +1,98 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memoire</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mémoire</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  /* Container for wings */
+  .wings-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    animation: open 2.5s ease forwards;
+  }
+
+  .wing {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.6));
+  }
+
+  .left-wing {
+    left: 0;
+    transform-origin: right center;
+    background-image: url('left-wing.png'); /* Remplacer par ton image */
+    animation: wingLeft 2.5s ease forwards;
+  }
+
+  .right-wing {
+    right: 0;
+    transform-origin: left center;
+    background-image: url('right-wing.png'); /* Remplacer par ton image */
+    animation: wingRight 2.5s ease forwards;
+  }
+
+  @keyframes wingLeft {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-65deg); }
+  }
+
+  @keyframes wingRight {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(65deg); }
+  }
+
+  @keyframes open {
+    0% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
+  /* Content that appears after animation */
+  .content {
+    position: absolute;
+    opacity: 0;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    text-align: center;
+    animation: fadeIn 1.5s ease forwards;
+    animation-delay: 2.3s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
 </head>
-<body style="font-family: Arial; padding: 40px; text-align: center;">
-    <h1>Mémoire</h1>
-    <p>Page en construction. À venir : photos, vidéos, textes…</p>
+<body>
+
+<div class="wings-container">
+  <div class="wing left-wing"></div>
+  <div class="wing right-wing"></div>
+</div>
+
+<div class="content">
+  <h1>Souvenirs éternels</h1>
+  <p>Clique pour entrer</p>
+</div>
+
 </body>
 </html>
