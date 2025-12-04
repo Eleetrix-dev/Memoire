@@ -3,28 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memoire</title>
-
-    <!-- Lien vers ton CSS externalisé -->
+    <title>Souvenirs</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <img src="left-wing.png" class="wing left" alt="Aile gauche">
-        <img src="right-wing.png" class="wing right" alt="Aile droite">
+    <!-- MENU BURGER -->
+    <div class="burger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
 
-    <div class="welcome">
-    <h1>Souvenir</h1>
-    <p>Cliquez pour entrer</p>
-    </div>
-    
-    <script>
-    document.body.onclick = () => {
-        window.location.href = "page2.html"; // La page suivante
-    };
-    </script>
-    
+    <!-- MENU LATERAL -->
+    <nav id="sideMenu">
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#videos">Vidéos</a></li>
+            <li><a href="#texte">Textes</a></li>
+        </ul>
+    </nav>
+
+    <!-- SECTION PRINCIPALE -->
+    <header id="accueil">
+        <h1>Souvenirs</h1>
+        <p>Les moments importants ne disparaissent jamais.</p>
+    </header>
+
+    <!-- PHOTOS PRINCIPALES -->
+    <section class="main-gallery" id="galerie">
+        <h2>Photos principales</h2>
+        <div class="grid">
+            <img src="assets/images/photo1.jpg" alt="">
+            <img src="assets/images/photo2.jpg" alt="">
+            <img src="assets/images/photo3.jpg" alt="">
+        </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section id="videos">
+        <h2>Vidéo principale</h2>
+        <video controls>
+            <source src="assets/videos/video1.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
