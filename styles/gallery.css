@@ -1,0 +1,30 @@
+body {
+    background: #0c0c0c;
+    color: #d0d0d0;
+    margin: 0;
+    padding: 20px;
+    font-family: "Segoe UI";
+}
+
+.back {
+    color: #b9ffcc;
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+    color: #b9ffcc;
+}
+
+.gallery-grid {
+    margin-top: 30px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.gallery-grid img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+}
