@@ -1,48 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mémoire</title>
-    <link rel="stylesheet" href="styles/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Souvenirs — Mémoire</title>
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
 
-    <!-- Menu flottant -->
-    <div id="floatingMenu">≡</div>
+  <!-- LANDING: wings + smoke + welcome -->
+  <div id="landing" aria-hidden="false">
+    <div class="smoke-layer" aria-hidden="true"></div>
 
-    <nav id="sideMenu">
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li class="submenu">
-                Galerie ▾
-                <ul>
-                    <li><a href="gallery.html">Photos</a></li>
-                    <li><a href="#">Vidéos</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Hommage</a></li>
-        </ul>
-    </nav>
-
-    <!-- Animation Ailes -->
-    <div id="entryContainer">
-        <img src="assets/images/left-wing.png" class="wing left-wing">
-        <img src="assets/images/right-wing.png" class="wing right-wing">
-        <button id="enterBtn">Cliquez pour entrer</button>
+    <div class="wings-wrapper" aria-hidden="true">
+      <img src="assets/images/left-wing.png" alt="" class="wing left" />
+      <img src="assets/images/right-wing.png" alt="" class="wing right" />
     </div>
 
-    <!-- Portfolio -->
-    <section id="portfolio" class="hidden">
-        <h1>Souvenirs</h1>
-        <div class="grid">
-            <!-- Exemple d’images — tu ajouteras les tiennes -->
-            <img src="assets/photos/photo1.jpg" class="portfolio-item">
-            <img src="assets/photos/photo2.jpg" class="portfolio-item">
-            <img src="assets/photos/photo3.jpg" class="portfolio-item">
-        </div>
+    <div class="welcome" role="button" tabindex="0" aria-label="Entrer">
+      <h1>Souvenir</h1>
+      <p class="sub">Cliquez pour ouvrir</p>
+    </div>
+  </div>
+
+  <!-- PASSWORD MODAL (hidden until after wings open) -->
+  <div id="pwdModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pwdTitle">
+    <div class="modal-card">
+      <h2 id="pwdTitle">Accès</h2>
+      <p>Entrez le mot de passe pour afficher les souvenirs</p>
+      <input id="pwdInput" type="password" placeholder="Mot de passe" />
+      <div class="modal-actions">
+        <button id="pwdCancel" class="btn ghost">Annuler</button>
+        <button id="pwdOk" class="btn primary">Ouvrir</button>
+      </div>
+      <p class="hint">Astuce : tu peux ouvrir automatiquement si tu ajoutes <code>#k=AUTOKEY</code> à l'URL</p>
+    </div>
+  </div>
+
+  <!-- Floating burger -->
+  <button id="burger" aria-label="Ouvrir le menu" title="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- Side menu -->
+  <aside id="sideMenu" aria-hidden="true">
+    <nav>
+      <ul>
+        <li><a href="#accueil" data-target="accueil">Accueil</a></li>
+        <li class="has-sub">Galerie
+          <ul>
+            <li><a href="gallery.html">Photos</a></li>
+            <li><a href="#videos" data-target="videos">Vidéos</a></li>
+          </ul>
+        </li>
+        <li><a href="homage.html">Hommage</a></li>
+        <li><a href="#texte" data-target="texte">Textes</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT (hidden until unlocked) -->
+  <main id="mainContent" class="hidden" tabindex="-1">
+    <header id="accueil" class="hero">
+      <div class="hero-inner">
+        <h2>Hommage</h2>
+        <p class="hero-sub">Les souvenirs restent vivants dans nos cœurs.</p>
+      </div>
+    </header>
+
+    <section id="portfolio" class="section">
+      <h3>Portfolio</h3>
+      <div class="grid" id="portfolioGrid">
+        <!-- exemples ; remplace par tes images -->
+        <figure class="card"><img data-src="assets/photos/photo1.jpg" alt="Photo 1" class="lazy"/><figcaption>Nom — Date</figcaption></figure>
+        <figure class="card"><img data-src="assets/photos/photo2.jpg" alt="Photo 2" class="lazy"/><figcaption>Nom — Date</figcaption></figure>
+        <figure class="card"><img data-src="assets/photos/photo3.jpg" alt="Photo 3" class="lazy"/><figcaption>Nom — Date</figcaption></figure>
+        <figure class="card"><img data-src="assets/photos/photo4.jpg" alt="Photo 4" class="lazy"/><figcaption>Nom — Date</figcaption></figure>
+      </div>
     </section>
 
-    <script src="scripts/script.js"></script>
+    <section id="videos" class="section">
+      <h3>Vidéos</h3>
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="assets/photos/video-poster.jpg">
+          <source src="assets/videos/video1.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section id="texte" class="section">
+      <h3>Textes & Lettres</h3>
+      <article class="text-card">
+        <h4>Lettre</h4>
+        <p>Ici se placera un texte intime. Tu peux modifier ce contenu facilement.</p>
+      </article>
+    </section>
+
+    <footer class="small muted">Site personnel — Accès via QR code</footer>
+  </main>
+
+  <!-- Lightbox element (injected on demand by JS) -->
+
+  <script src="scripts/script.js"></script>
 </body>
 </html>
