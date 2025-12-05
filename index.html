@@ -1,99 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Souvenirs — Mémoire</title>
-  <link rel="stylesheet" href="styles/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mémoire</title>
+    <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
 
-  <!-- AILES + ÉCRAN D'ACCUEIL -->
-  <div id="landing">
-    <div class="wings-wrapper" aria-hidden="true">
-      <img src="assets/images/left-wing.png" alt="" class="wing left" />
-      <img src="assets/images/right-wing.png" alt="" class="wing right" />
-    </div>
+    <!-- Menu flottant -->
+    <div id="floatingMenu">≡</div>
 
-    <div class="welcome">
-      <p class="sub">
-        Ceux que nous avons aimés ne meurent jamais, ils vivent à jamais gravés en nous.
-      </p></n>
-      
-      <h1>Souvenirs</h1></n>
-    
-      <p class="sub">Cliquez pour ouvrir</p>
-    </div>
-  </div>
-
-  <!-- BOUTON BURGER FIXE -->
-  <button id="burger" aria-label="Ouvrir le menu" title="Menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-
-  <!-- MENU LATÉRAL -->
-  <aside id="sideMenu" aria-hidden="true">
-    <nav>
-      <ul>
-        <li><a href="#accueil" data-target="accueil">Accueil</a></li>
-        <li><a href="#galerie" data-target="galerie">Galerie</a></li>
-        <li><a href="#videos" data-target="videos">Vidéos</a></li>
-        <li><a href="#texte" data-target="texte">Textes</a></li>
-        <li><a href="#contact" data-target="contact">Contact</a></li>
-      </ul>
+    <nav id="sideMenu">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li class="submenu">
+                Galerie ▾
+                <ul>
+                    <li><a href="gallery.html">Photos</a></li>
+                    <li><a href="#">Vidéos</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Hommage</a></li>
+        </ul>
     </nav>
-  </aside>
 
-  <!-- CONTENU PRINCIPAL (CACHÉ JUSQU'AU CLIQUE) -->
-  <main id="mainContent" class="hidden" tabindex="-1">
+    <!-- Animation Ailes -->
+    <div id="entryContainer">
+        <img src="assets/images/left-wing.png" class="wing left-wing">
+        <img src="assets/images/right-wing.png" class="wing right-wing">
+        <button id="enterBtn">Cliquez pour entrer</button>
+    </div>
 
-    <!-- Header / Hero (après l'animation) -->
-    <header id="accueil" class="hero">
-      <div class="hero-inner">
-        <h2>Hommage</h2>
-        <p class="hero-sub">Les souvenirs de ceux qu'on aime.</p>
-      </div>
-    </header>
-
-    <!-- GALERIE -->
-    <section id="galerie" class="section">
-      <h3>Photos principales</h3>
-      <div class="grid" id="grid">
-        <!-- exemple de vignettes — remplace par les tiennes -->
-        <figure class="card"><img data-src="assets/images/photo1.jpg" alt="Photo 1" class="lazy"/><figcaption>Nom / Date</figcaption></figure>
-        <figure class="card"><img data-src="assets/images/photo2.jpg" alt="Photo 2" class="lazy"/><figcaption>Nom / Date</figcaption></figure>
-        <figure class="card"><img data-src="assets/images/photo3.jpg" alt="Photo 3" class="lazy"/><figcaption>Nom / Date</figcaption></figure>
-        <figure class="card"><img data-src="assets/images/photo4.jpg" alt="Photo 4" class="lazy"/><figcaption>Nom / Date</figcaption></figure>
-      </div>
+    <!-- Portfolio -->
+    <section id="portfolio" class="hidden">
+        <h1>Souvenirs</h1>
+        <div class="grid">
+            <!-- Exemple d’images — tu ajouteras les tiennes -->
+            <img src="assets/photos/photo1.jpg" class="portfolio-item">
+            <img src="assets/photos/photo2.jpg" class="portfolio-item">
+            <img src="assets/photos/photo3.jpg" class="portfolio-item">
+        </div>
     </section>
 
-    <!-- VIDÉO -->
-    <section id="videos" class="section">
-      <h3>Vidéo principale</h3>
-      <div class="video-wrap">
-        <video controls preload="metadata" poster="assets/images/video-poster.jpg">
-          <source src="assets/videos/video1.mp4" type="video/mp4" />
-          Ton navigateur ne supporte pas la balise <code>video</code>.
-        </video>
-      </div>
-    </section>
-
-    <!-- TEXTES -->
-    <section id="texte" class="section">
-      <h3>Textes & Lettres</h3>
-      <article class="text-card">
-        <h4>Lettre</h4>
-        <p>Ici tu pourras coller une lettre, un poème, ou n'importe quel texte. C'est un espace pour écrire et se souvenir.</p>
-      </article>
-    </section>
-
-    <!-- CONTACT / INFO -->
-    <section id="contact" class="section small">
-      <p class="muted">Site personnel — Accès via QR code</p>
-    </section>
-  </main>
-
-  <script src="scripts/script.js"></script>
-  
+    <script src="scripts/script.js"></script>
 </body>
 </html>
