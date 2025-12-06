@@ -1,6 +1,0 @@
-body{ margin:0; background:var(--bg, #0b0b0b); color:var(--silver,#d9d9d9); font-family:Inter,Arial; }
-.back{ display:inline-block; margin:14px; color:var(--accent,#9de2c1); text-decoration:none; }
-.gallery-main{ max-width:1100px; margin:0 auto; padding:20px; }
-.gallery-grid{ display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
-.gallery-grid img{ width:100%; border-radius:12px; cursor:pointer; transition: transform .28s; box-shadow: 0 16px 40px rgba(0,0,0,0.6); }
-.gallery-grid img:hover{ transform: translateY(-6px) scale(1.02); filter: drop-shadow(0 8px 24px rgba(157,226,193,0.03)); }
