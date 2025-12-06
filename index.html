@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Memorial — Home</title>
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/index.css" />
+</head>
+<body>
+
+  <div id="lock-screen">
+    <div id="wings-stage">
+      <img id="left-wing" src="assets/images/left-wing.png" alt="left wing">
+      <img id="right-wing" src="assets/images/right-wing.png" alt="right wing">
+    </div>
+
+    <div id="landing-text">
+      <h1>Memorial</h1>
+      <p class="hint">Click anywhere to open</p>
+    </div>
+
+    <div id="password-box" class="hidden" role="dialog" aria-hidden="true">
+      <div class="box">
+        <h2>Enter Password</h2>
+        <input id="pwd-input" type="password" autocomplete="off" placeholder="Password">
+        <div class="actions">
+          <button id="pwd-submit">Enter</button>
+        </div>
+        <p id="pwd-msg" class="msg"></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="app" class="hidden">
+    <header id="topbar">
+      <div id="brand">🪽 Memorial</div>
+      <nav id="main-menu"></nav>
+    </header>
+
+    <main id="main">
+      <section id="hero">
+        <h2>Remembering</h2>
+        <p>Private collection of memories</p>
+      </section>
+
+      <section id="preview-portfolio">
+        <h3>Latest photos</h3>
+        <div id="portfolio-grid" class="grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+  <script src="scripts/password.js" defer></script>
+  <script src="scripts/menu.js" defer></script>
+  <script src="scripts/gallery-loader.js" defer></script>
+</body>
+</html>
