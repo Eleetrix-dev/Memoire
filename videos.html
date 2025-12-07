@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidéos - Memorial</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/videos.css">
+</head>
+<body>
+    <!-- Menu hamburger -->
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Menu navigation -->
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li>
+                <a href="#" class="has-submenu">Galerie</a>
+                <ul class="submenu">
+                    <li><a href="photos.html">Photos</a></li>
+                    <li><a href="videos.html">Vidéos</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenu vidéos -->
+    <div class="page-content">
+        <a href="index.html" class="back-btn">← Retour</a>
+        <h1 class="page-title">Galerie Vidéos</h1>
+        <div class="gallery-grid" id="videos-gallery">
+            <!-- Vidéos chargées dynamiquement -->
+        </div>
+    </div>
+
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/gallery.js"></script>
+    <script>
+        // Charger uniquement les vidéos
+        loadVideosGallery();
+    </script>
+</body>
+</html>
