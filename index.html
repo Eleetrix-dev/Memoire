@@ -6,7 +6,18 @@
   <title>Memorial — Home</title>
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/index.css" />
+
+  <!-- 🔒 Charge la version CDN (fonctionne GH Pages & local file://) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+
+  <!-- 🔒 Fallback : si le CDN échoue, on charge ta version locale -->
+  <script>
+    if (typeof bcrypt === "undefined") {
+      document.write('<script src="scripts/libs/bcrypt.min.js"><\/script>');
+    }
+  </script>
 </head>
+
 <body>
 
   <div id="lock-screen">
@@ -46,16 +57,3 @@
 
       <section id="preview-portfolio">
         <h3>Latest photos</h3>
-        <div id="portfolio-grid" class="grid"></div>
-      </section>
-    </main>
-  </div>
-
-
-  <!-- Charger bcryptjs AVANT ton script password.js -->
-  <script src="scripts/libs/bcrypt.min.js"></script>
-  <script src="scripts/password.js" defer></script>
-  <script src="scripts/menu.js" defer></script>
-  <script src="scripts/gallery-loader.js" defer></script>
-</body>
-</html>
