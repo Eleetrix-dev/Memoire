@@ -2,5 +2,7 @@
   "photos": [
     "gallery/photos/photo1.jpg"
   ],
-  "videos": []
+  "videos": [
+    "gallery/videos/video1.mp4"
+  ]
 }
