@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-      const ok = bcrypt.compareSync(value, storedHash); // ✅ use value here
+      const valid = bcrypt.compareSync(password, storedHash); // ✅ use value here
       if (ok) {
         document.getElementById('lock-screen').remove();
         app.classList.remove('hidden');
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const token = frag.substring(3);
     if (storedHash) {
       try {
-        const ok = bcrypt.compareSync(token, storedHash);
+        const hash = bcrypt.hashSync(password, 12);
         if (ok) {
           document.getElementById('lock-screen').remove();
           app.classList.remove('hidden');
