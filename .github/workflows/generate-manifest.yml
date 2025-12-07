@@ -1,0 +1,102 @@
+name: Generate Manifest
+
+# Déclenche l'action quand tu push des fichiers ou manuellement
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'gallery/photos/**'
+      - 'gallery/videos/**'
+  workflow_dispatch:  # Permet de lancer manuellement
+
+jobs:
+  generate-manifest:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Récupérer le code du repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      # 2. Configurer Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      
+      # 3. Générer le manifest
+      - name: Generate manifest.json
+        run: |
+          python3 << 'EOF'
+          import os
+          import json
+          from pathlib import Path
+
+          # Extensions acceptées
+          PHOTO_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp'}
+          VIDEO_EXTENSIONS = {'.mp4', '.webm', '.mov', '.avi', '.mkv'}
+
+          def scan_directory(directory, extensions):
+              """Scanne un dossier et retourne la liste des fichiers"""
+              files = []
+              dir_path = Path(directory)
+              
+              if not dir_path.exists():
+                  print(f"⚠️  Le dossier {directory} n'existe pas")
+                  dir_path.mkdir(parents=True, exist_ok=True)
+                  return files
+              
+              for file in sorted(dir_path.rglob('*')):
+                  if file.is_file() and file.suffix.lower() in extensions:
+                      # Chemin relatif avec '/' pour le web
+                      relative_path = str(file).replace('\\', '/')
+                      files.append(relative_path)
+              
+              return files
+
+          # Scanner les dossiers
+          photos = scan_directory('gallery/photos', PHOTO_EXTENSIONS)
+          videos = scan_directory('gallery/videos', VIDEO_EXTENSIONS)
+
+          # Créer le manifest
+          manifest = {
+              'photos': photos,
+              'videos': videos
+          }
+
+          # Sauvegarder le fichier JSON
+          manifest_path = Path('gallery/manifest.json')
+          manifest_path.parent.mkdir(parents=True, exist_ok=True)
+
+          with open(manifest_path, 'w', encoding='utf-8') as f:
+              json.dump(manifest, f, indent=2, ensure_ascii=False)
+
+          # Afficher le résumé
+          print("✅ Manifest généré avec succès!")
+          print(f"📷 Photos trouvées: {len(photos)}")
+          print(f"🎬 Vidéos trouvées: {len(videos)}")
+          
+          if photos:
+              print("\nPhotos:")
+              for photo in photos:
+                  print(f"  - {photo}")
+          
+          if videos:
+              print("\nVidéos:")
+              for video in videos:
+                  print(f"  - {video}")
+          EOF
+      
+      # 4. Commit et push le manifest
+      - name: Commit manifest.json
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add gallery/manifest.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Auto-generate manifest.json"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
