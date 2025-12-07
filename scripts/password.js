@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     pwdMsg.textContent = '';
     if(!storedHash){ pwdMsg.textContent = 'Configuration error'; return; }
     try {
-      const ok = bcrypt.compareSync(value, storedHash);
+      const ok = bcrypt.compareSync(token, storedHash);
       if(ok){
         document.getElementById('lock-screen').remove();
         app.classList.remove('hidden');
