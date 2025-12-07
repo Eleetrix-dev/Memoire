@@ -1,0 +1,250 @@
+/* Adaptations pour smartphones et tablettes */
+
+/* Touch-friendly - Zones tactiles plus grandes */
+@media (hover: none) and (pointer: coarse) {
+    .hamburger {
+        width: 50px;
+        height: 50px;
+        top: 20px;
+        right: 20px;
+    }
+    
+    .nav-menu a {
+        padding: 15px 0;
+        font-size: 1.4rem;
+    }
+    
+    .back-btn {
+        padding: 15px 35px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Tablettes (Portrait) */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .portfolio {
+        padding: 0 20px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Smartphones (Portrait et Paysage) */
+@media (max-width: 768px) {
+    /* Splash screen adapté */
+    .wing {
+        width: 200px;
+        height: 350px;
+    }
+    
+    .splash-text h1 {
+        font-size: 2.2rem;
+        letter-spacing: 4px;
+    }
+    
+    .splash-text p {
+        font-size: 1rem;
+    }
+    
+    /* Navigation mobile */
+    .nav-menu {
+        width: 85vw;
+        max-width: 300px;
+        padding: 70px 25px;
+    }
+    
+    .hamburger {
+        top: 15px;
+        right: 15px;
+    }
+    
+    /* Contenu principal */
+    #main-content,
+    .page-content {
+        padding: 80px 20px 40px 20px;
+    }
+    
+    /* Hero section */
+    .hero {
+        margin-bottom: 50px;
+        padding: 30px 10px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    /* Portfolio */
+    .portfolio h2,
+    .page-title {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+    
+    /* Grille galerie mobile */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 25px;
+    }
+    
+    .gallery-item {
+        height: 250px;
+    }
+    
+    /* Photos gallery mobile */
+    #photos-gallery .gallery-item {
+        height: 280px;
+    }
+    
+    /* Videos gallery mobile */
+    #videos-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    #videos-gallery .gallery-item {
+        height: 280px;
+    }
+    
+    /* Lightbox mobile */
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 85%;
+    }
+    
+    .lightbox-close {
+        top: 15px;
+        right: 15px;
+        font-size: 2.5rem;
+    }
+    
+    /* Overlay adapté mobile */
+    .gallery-item .overlay {
+        transform: translateY(0);
+        background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.9) 100%);
+    }
+    
+    .overlay h3 {
+        font-size: 1rem;
+    }
+    
+    .overlay p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Petits smartphones (< 400px) */
+@media (max-width: 400px) {
+    .splash-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+    
+    .portfolio h2,
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .nav-menu a {
+        font-size: 1.3rem;
+    }
+    
+    .gallery-item {
+        height: 220px;
+    }
+    
+    .back-btn {
+        padding: 10px 25px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Mode paysage mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .splash-text h1 {
+        font-size: 2rem;
+    }
+    
+    .wing {
+        width: 180px;
+        height: 300px;
+    }
+    
+    #main-content,
+    .page-content {
+        padding: 60px 20px 30px 20px;
+    }
+    
+    .hero {
+        margin-bottom: 30px;
+        padding: 20px 10px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-item {
+        height: 200px;
+    }
+}
+
+/* Optimisations tactiles */
+@media (hover: none) {
+    /* Désactiver les effets hover sur mobile */
+    .gallery-item:hover {
+        transform: none;
+    }
+    
+    /* Afficher overlay par défaut sur mobile */
+    .gallery-item .overlay {
+        transform: translateY(0);
+    }
+    
+    /* Badges toujours visibles sur mobile */
+    #photos-gallery .gallery-item::before,
+    #videos-gallery .gallery-item::before {
+        opacity: 1;
+    }
+    
+    /* Play button toujours visible sur mobile */
+    #videos-gallery .gallery-item::after {
+        opacity: 0.8;
+    }
+}
+
+/* Améliorer la lisibilité sur petits écrans */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    /* Éviter le zoom sur les inputs */
+    input, textarea, select {
+        font-size: 16px;
+    }
+}
+
+/* Optimisation pour les écrans OLED (dark mode natif) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #000;
+    }
+}
