@@ -1,0 +1,150 @@
+/* Styles globaux pour toutes les pages */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #c0c0c0;
+    overflow-x: hidden;
+}
+
+/* Lightbox global */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 3rem;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+    color: #00ff88;
+}
+
+/* Grille galerie globale */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.gallery-item {
+    position: relative;
+    height: 300px;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    border: 2px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    border-color: #00ff88;
+    box-shadow: 0 10px 40px rgba(0, 255, 136, 0.3);
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    transform: translateY(0);
+}
+
+.overlay h3 {
+    color: #00ff88;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.overlay p {
+    color: #c0c0c0;
+    font-size: 0.9rem;
+}
+
+/* Bouton retour */
+.back-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #333, #00ff88);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+}
+
+/* Contenu de page générique */
+.page-content {
+    min-height: 100vh;
+    padding: 100px 50px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.page-title {
+    color: #00ff88;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
