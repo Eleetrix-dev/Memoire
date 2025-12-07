@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     pwdMsg.textContent = '';
     if(!storedHash){ pwdMsg.textContent = 'Configuration error'; return; }
     try {
-      const ok = bcrypt.compareSync(token, storedHash);
+      const ok = bcrypt.compareSync(value, storedHash);
       if(ok){
         document.getElementById('lock-screen').remove();
         app.classList.remove('hidden');
@@ -46,7 +46,7 @@ if(frag && frag.startsWith('#k=')){
   const token = frag.substring(3);
   if(storedHash){
     try {
-      const ok = bcrypt.compareSync(token, storedHash);
+      const ok = bcrypt.compareSync(value, storedHash);
       if(ok){
         document.getElementById('lock-screen').remove();
         app.classList.remove('hidden');
