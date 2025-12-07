@@ -1,0 +1,115 @@
+/* Styles spécifiques à la page photos */
+
+body {
+    background: linear-gradient(135deg, #000 0%, #0a0a0a 50%, #000 100%);
+}
+
+.page-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-title {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    animation: titleGlow 2s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(0, 255, 136, 0.6), 0 0 60px rgba(0, 255, 136, 0.4);
+    }
+}
+
+/* Style spécifique pour la grille photos */
+#photos-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+#photos-gallery .gallery-item {
+    height: 320px;
+    border: 2px solid #2a2a2a;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de zoom sur les photos */
+#photos-gallery .gallery-item img {
+    transition: transform 0.5s ease;
+}
+
+#photos-gallery .gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Overlay avec info photo */
+#photos-gallery .overlay {
+    background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.95) 100%);
+    padding: 25px;
+}
+
+#photos-gallery .overlay h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+/* Badge photo */
+#photos-gallery .gallery-item::before {
+    content: '📷';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 255, 136, 0.2);
+    padding: 8px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#photos-gallery .gallery-item:hover::before {
+    opacity: 1;
+}
+
+/* Animation d'apparition en cascade */
+#photos-gallery .gallery-item {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: zoomIn 0.5s ease forwards;
+}
+
+#photos-gallery .gallery-item:nth-child(1) { animation-delay: 0.05s; }
+#photos-gallery .gallery-item:nth-child(2) { animation-delay: 0.1s; }
+#photos-gallery .gallery-item:nth-child(3) { animation-delay: 0.15s; }
+#photos-gallery .gallery-item:nth-child(4) { animation-delay: 0.2s; }
+#photos-gallery .gallery-item:nth-child(5) { animation-delay: 0.25s; }
+#photos-gallery .gallery-item:nth-child(6) { animation-delay: 0.3s; }
+#photos-gallery .gallery-item:nth-child(7) { animation-delay: 0.35s; }
+#photos-gallery .gallery-item:nth-child(8) { animation-delay: 0.4s; }
+#photos-gallery .gallery-item:nth-child(9) { animation-delay: 0.45s; }
+
+@keyframes zoomIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #photos-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    #photos-gallery .gallery-item {
+        height: 280px;
+    }
+}
