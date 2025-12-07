@@ -1,0 +1,155 @@
+/* Styles spécifiques à la page vidéos */
+
+body {
+    background: radial-gradient(circle at top right, #001a0a 0%, #000 50%, #001a0a 100%);
+}
+
+.page-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-title {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.page-title::before {
+    content: '▶';
+    margin-right: 15px;
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* Style spécifique pour la grille vidéos */
+#videos-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+#videos-gallery .gallery-item {
+    height: 350px;
+    border: 2px solid #1a3a2a;
+    background: linear-gradient(135deg, #0a1a0a, #1a2a1a);
+}
+
+/* Contrôles vidéo personnalisés */
+#videos-gallery .gallery-item video {
+    transition: filter 0.3s ease;
+}
+
+#videos-gallery .gallery-item:hover video {
+    filter: brightness(1.1);
+}
+
+/* Overlay avec play icon */
+#videos-gallery .overlay {
+    background: linear-gradient(transparent 0%, rgba(0, 50, 20, 0.8) 40%, rgba(0, 0, 0, 0.95) 100%);
+    padding: 25px;
+}
+
+#videos-gallery .overlay h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+/* Badge vidéo avec durée */
+#videos-gallery .gallery-item::after {
+    content: '▶ PLAY';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 255, 136, 0.9);
+    color: #000;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 3;
+}
+
+#videos-gallery .gallery-item:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Indicateur de durée */
+#videos-gallery .gallery-item::before {
+    content: '🎬';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 255, 136, 0.2);
+    padding: 8px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    font-size: 1.2rem;
+}
+
+/* Animation d'apparition en cascade */
+#videos-gallery .gallery-item {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideInRight 0.6s ease forwards;
+}
+
+#videos-gallery .gallery-item:nth-child(odd) {
+    animation-name: slideInLeft;
+}
+
+#videos-gallery .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+#videos-gallery .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+#videos-gallery .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+#videos-gallery .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+#videos-gallery .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+#videos-gallery .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Effet de bordure animée sur hover */
+#videos-gallery .gallery-item:hover {
+    border-color: #00ff88;
+    box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4), inset 0 0 20px rgba(0, 255, 136, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #videos-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    #videos-gallery .gallery-item {
+        height: 300px;
+    }
+}
