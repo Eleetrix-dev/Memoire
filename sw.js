@@ -3,7 +3,7 @@ const CACHE = "memorial-v1";
 self.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(CACHE).then((cache) => {
-      return cache.addAll([
+      cache.addAll([
         "/", 
         "/Memoire/",
         "index.html",
