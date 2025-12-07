@@ -42,13 +42,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
   pwdInput.addEventListener('keydown', (e)=> { if(e.key==='Enter') pwdBtn.click(); });
   const frag = window.location.hash;
-  if(frag && frag.startsWith('#k=')){
-    const token = frag.substring(3);
-    if(storedHash){
-      try {
-        const ok = bcrypt.compareSync(value, storedHash);
-        if(ok){ document.getElementById('lock-screen').remove(); app.classList.remove('hidden'); }
-      } catch(e){}
+if(frag && frag.startsWith('#k=')){
+  const token = frag.substring(3);
+  if(storedHash){
+    try {
+      const ok = bcrypt.compareSync(token, storedHash);
+      if(ok){
+        document.getElementById('lock-screen').remove();
+        app.classList.remove('hidden');
+      }
+    } catch(e){
+      console.error(e);
     }
   }
+}
+
 });
