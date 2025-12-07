@@ -2,7 +2,7 @@ const CACHE = "memorial-v1";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
-    caches.open(CACHE).then((cache) => {
+    caches.open(CACHE).then((cache) =>
       cache.addAll([
         "/", 
         "/Memoire/",
@@ -15,8 +15,8 @@ self.addEventListener("install", (e) => {
         "assets/config/password.json",
         "assets/images/left-wing.png",
         "assets/images/right-wing.png"
-      ]);
-    });
+      ])
+    )
   );
   self.skipWaiting();
 });
