@@ -1,4 +1,11 @@
-/* Adaptations pour smartphones et tablettes */
+/* Adaptations pour smartphones et tablettes - VERSION RENFORCÉE */
+
+/* Fix du viewport pour éviter les débordements */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
 
 /* Touch-friendly - Zones tactiles plus grandes */
 @media (hover: none) and (pointer: coarse) {
@@ -28,6 +35,7 @@
     
     .portfolio {
         padding: 0 20px;
+        max-width: 100%;
     }
     
     .gallery-grid {
@@ -38,213 +46,308 @@
 
 /* Smartphones (Portrait et Paysage) */
 @media (max-width: 768px) {
+    /* Fix de débordement global */
+    * {
+        max-width: 100%;
+    }
+    
+    body {
+        overflow-x: hidden !important;
+    }
+    
     /* Splash screen adapté */
     .wing {
-        width: 200px;
-        height: 350px;
+        width: 180px !important;
+        height: 320px !important;
     }
     
     .splash-text h1 {
-        font-size: 2.2rem;
-        letter-spacing: 4px;
+        font-size: 2rem !important;
+        letter-spacing: 3px !important;
     }
     
     .splash-text p {
-        font-size: 1rem;
+        font-size: 0.9rem !important;
     }
     
     /* Navigation mobile */
     .nav-menu {
-        width: 85vw;
-        max-width: 300px;
-        padding: 70px 25px;
+        width: 75vw !important;
+        max-width: 280px !important;
+        padding: 70px 20px !important;
+        right: -100% !important;
+    }
+    
+    .nav-menu.active {
+        right: 0 !important;
     }
     
     .hamburger {
-        top: 15px;
-        right: 15px;
+        top: 15px !important;
+        right: 15px !important;
     }
     
     /* Contenu principal */
     #main-content,
     .page-content {
-        padding: 80px 20px 40px 20px;
+        padding: 70px 15px 40px 15px !important;
+        width: 100% !important;
+        max-width: 100vw !important;
     }
     
     /* Hero section */
     .hero {
-        margin-bottom: 50px;
-        padding: 30px 10px;
+        margin-bottom: 40px !important;
+        padding: 20px 5px !important;
+        width: 100% !important;
+    }
+    
+    .hero::before {
+        width: 300px !important;
+        height: 300px !important;
     }
     
     .hero h1 {
-        font-size: 2rem;
-        letter-spacing: 1px;
+        font-size: 1.8rem !important;
+        letter-spacing: 1px !important;
+        word-wrap: break-word;
     }
     
     .hero p {
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        padding: 0 10px;
     }
     
     /* Portfolio */
-    .portfolio h2,
-    .page-title {
-        font-size: 1.8rem;
-        margin-bottom: 25px;
+    .portfolio {
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 0 !important;
     }
     
-    /* Grille galerie mobile */
+    .portfolio h2,
+    .page-title {
+        font-size: 1.6rem !important;
+        margin-bottom: 20px !important;
+    }
+    
+    /* Grille galerie mobile - UNE SEULE COLONNE */
     .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        margin-top: 25px;
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        margin-top: 20px !important;
+        padding: 0 !important;
+        width: 100% !important;
     }
     
     .gallery-item {
-        height: 250px;
+        height: 280px !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
     
     /* Photos gallery mobile */
+    #photos-gallery {
+        grid-template-columns: 1fr !important;
+    }
+    
     #photos-gallery .gallery-item {
-        height: 280px;
+        height: 300px !important;
     }
     
     /* Videos gallery mobile */
     #videos-gallery {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
     
     #videos-gallery .gallery-item {
-        height: 280px;
+        height: 300px !important;
     }
     
     /* Lightbox mobile */
     .lightbox-content {
-        max-width: 95%;
-        max-height: 85%;
+        max-width: 90% !important;
+        max-height: 80% !important;
     }
     
     .lightbox-close {
-        top: 15px;
-        right: 15px;
-        font-size: 2.5rem;
+        top: 10px !important;
+        right: 10px !important;
+        font-size: 2.5rem !important;
+        background: rgba(0,0,0,0.7);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
-    /* Overlay adapté mobile */
+    /* Overlay adapté mobile - TOUJOURS VISIBLE */
     .gallery-item .overlay {
-        transform: translateY(0);
-        background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.9) 100%);
+        transform: translateY(0) !important;
+        background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.95) 100%) !important;
+        padding: 15px !important;
     }
     
     .overlay h3 {
-        font-size: 1rem;
+        font-size: 1rem !important;
     }
     
     .overlay p {
-        font-size: 0.85rem;
+        font-size: 0.85rem !important;
+    }
+    
+    /* Bouton retour */
+    .back-btn {
+        margin-bottom: 20px !important;
+        display: inline-block !important;
     }
 }
 
 /* Petits smartphones (< 400px) */
 @media (max-width: 400px) {
     .splash-text h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem !important;
+    }
+    
+    .wing {
+        width: 150px !important;
+        height: 280px !important;
     }
     
     .hero h1 {
-        font-size: 1.7rem;
+        font-size: 1.5rem !important;
     }
     
     .portfolio h2,
     .page-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem !important;
     }
     
     .nav-menu a {
-        font-size: 1.3rem;
+        font-size: 1.2rem !important;
     }
     
     .gallery-item {
-        height: 220px;
+        height: 250px !important;
     }
     
     .back-btn {
-        padding: 10px 25px;
-        font-size: 0.95rem;
-    }
-}
-
-/* Mode paysage mobile */
-@media (max-width: 768px) and (orientation: landscape) {
-    .splash-text h1 {
-        font-size: 2rem;
-    }
-    
-    .wing {
-        width: 180px;
-        height: 300px;
+        padding: 10px 20px !important;
+        font-size: 0.9rem !important;
     }
     
     #main-content,
     .page-content {
-        padding: 60px 20px 30px 20px;
-    }
-    
-    .hero {
-        margin-bottom: 30px;
-        padding: 20px 10px;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .gallery-item {
-        height: 200px;
+        padding: 60px 10px 30px 10px !important;
     }
 }
 
-/* Optimisations tactiles */
+/* Mode paysage mobile */
+@media (max-width: 900px) and (orientation: landscape) {
+    .splash-text h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    .wing {
+        width: 150px !important;
+        height: 250px !important;
+    }
+    
+    #main-content,
+    .page-content {
+        padding: 50px 15px 30px 15px !important;
+    }
+    
+    .hero {
+        margin-bottom: 25px !important;
+        padding: 15px 5px !important;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+    
+    .gallery-item {
+        height: 220px !important;
+    }
+}
+
+/* Optimisations tactiles - Désactiver hover sur mobile */
 @media (hover: none) {
-    /* Désactiver les effets hover sur mobile */
     .gallery-item:hover {
-        transform: none;
+        transform: translateY(-5px) !important;
     }
     
     /* Afficher overlay par défaut sur mobile */
     .gallery-item .overlay {
-        transform: translateY(0);
+        transform: translateY(0) !important;
     }
     
     /* Badges toujours visibles sur mobile */
     #photos-gallery .gallery-item::before,
     #videos-gallery .gallery-item::before {
-        opacity: 1;
+        opacity: 1 !important;
     }
     
-    /* Play button toujours visible sur mobile */
+    /* Play button visible sur mobile */
     #videos-gallery .gallery-item::after {
-        opacity: 0.8;
+        opacity: 0.9 !important;
+    }
+    
+    /* Effet hover adapté au tap */
+    .gallery-item:active {
+        transform: scale(0.98);
     }
 }
 
 /* Améliorer la lisibilité sur petits écrans */
 @media (max-width: 768px) {
     body {
-        font-size: 16px;
+        font-size: 16px !important;
         -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
     }
     
     /* Éviter le zoom sur les inputs */
-    input, textarea, select {
-        font-size: 16px;
+    input, textarea, select, button {
+        font-size: 16px !important;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
     }
 }
 
-/* Optimisation pour les écrans OLED (dark mode natif) */
+/* Fix pour éviter les coupures de texte */
+@media (max-width: 768px) {
+    h1, h2, h3, h4, h5, h6 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+/* Optimisation pour les écrans OLED */
 @media (prefers-color-scheme: dark) {
     body {
-        background: #000;
+        background: #000 !important;
+    }
+}
+
+/* Fix spécifique pour Android Chrome */
+@supports (-webkit-touch-callout: none) {
+    body {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
     }
 }
